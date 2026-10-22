@@ -5,6 +5,14 @@ version: "1.0.0"
 date-released: "2026-10-22"
 license: MIT
 repository-code: "https://github.com/cyrilvoyant/solar-variability-scv"
+doi: "10.5281/zenodo.23562553"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23562553"
+    description: "Concept DOI (all versions, Zenodo)"
+  - type: doi
+    value: "10.5281/zenodo.23562554"
+    description: "Version DOI of v1.0.0 (Zenodo)"
 keywords:
   - solar irradiance
   - variability

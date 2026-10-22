@@ -1,5 +1,7 @@
 # solar-variability-scv
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23562553.svg)](https://doi.org/10.5281/zenodo.23562553) (all versions; v1.0.0: [10.5281/zenodo.23562554](https://doi.org/10.5281/zenodo.23562554))
+
 **How variable is the sun at a site, and how forecastable? Two numbers, sCV and F, with MATLAB code, worked examples and figures.**
 
 > C. Voyant, A. Julien, M. Despotovic, G. Notton, L. A. Garcia-Gutierrez, C. F. Nicolosi, P. Blanc, J. Bright.
