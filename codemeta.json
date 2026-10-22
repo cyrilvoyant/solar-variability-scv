@@ -1,0 +1,89 @@
+{
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
+  "name": "solar-variability-scv: stochastic coefficient of variation (sCV) and forecastability (F) of solar irradiance (MATLAB)",
+  "description": "Stochastic coefficient of variation (sCV) and forecastability (F) of solar irradiance: MATLAB functions, worked examples, figures and the scripts of the Renewable Energy 2026 article.",
+  "codeRepository": "https://github.com/cyrilvoyant/solar-variability-scv",
+  "url": "https://cyrilvoyant.github.io/methods/solar-variability-scv.html",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Cyril",
+      "familyName": "Voyant",
+      "@id": "https://orcid.org/0000-0003-0242-7377",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Mines Paris - PSL University, Centre O.I.E."
+      }
+    }
+  ],
+  "license": "https://spdx.org/licenses/MIT",
+  "programmingLanguage": [
+    "MATLAB"
+  ],
+  "keywords": [
+    "solar irradiance",
+    "variability",
+    "forecastability",
+    "predictability",
+    "clear-sky",
+    "solar forecasting",
+    "MATLAB"
+  ],
+  "citation": {
+    "@type": "ScholarlyArticle",
+    "name": "Stochastic coefficient of variation: Assessing the variability and forecastability of solar irradiance",
+    "author": [
+      {
+        "@type": "Person",
+        "givenName": "Cyril",
+        "familyName": "Voyant",
+        "@id": "https://orcid.org/0000-0003-0242-7377"
+      },
+      {
+        "@type": "Person",
+        "givenName": "Alan",
+        "familyName": "Julien"
+      },
+      {
+        "@type": "Person",
+        "givenName": "Milan",
+        "familyName": "Despotovic",
+        "@id": "https://orcid.org/0000-0003-3144-5945"
+      },
+      {
+        "@type": "Person",
+        "givenName": "Gilles",
+        "familyName": "Notton",
+        "@id": "https://orcid.org/0000-0002-6267-9632"
+      },
+      {
+        "@type": "Person",
+        "givenName": "Luis Antonio",
+        "familyName": "Garcia-Gutierrez",
+        "@id": "https://orcid.org/0000-0002-3480-1784"
+      },
+      {
+        "@type": "Person",
+        "givenName": "Claudio Francesco",
+        "familyName": "Nicolosi",
+        "@id": "https://orcid.org/0009-0001-2962-6643"
+      },
+      {
+        "@type": "Person",
+        "givenName": "Philippe",
+        "familyName": "Blanc",
+        "@id": "https://orcid.org/0000-0002-6345-0004"
+      },
+      {
+        "@type": "Person",
+        "givenName": "Jamie",
+        "familyName": "Bright",
+        "@id": "https://orcid.org/0000-0002-9465-3453"
+      }
+    ],
+    "url": "https://doi.org/10.1016/j.renene.2025.123913"
+  },
+  "readme": "https://github.com/cyrilvoyant/solar-variability-scv/blob/main/README.md",
+  "issueTracker": "https://github.com/cyrilvoyant/solar-variability-scv/issues"
+}
