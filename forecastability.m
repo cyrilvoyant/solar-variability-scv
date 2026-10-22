@@ -11,8 +11,12 @@ function [F, info] = forecastability(I, I_clr, T, n, d)
     % it is perfectly correlated (rho_max = 1). Higher F: easier to forecast at that horizon.
 
     if nargin < 5, d = []; end
-    if n < 1 || n ~= round(n) || T < 2 || n > floor(T / 2)
-        error('forecastability:lags', 'Need an integer 1 <= n <= T/2.');
+    if ~isscalar(T) || ~isscalar(n) || ~isfinite(T) || ~isfinite(n) || T ~= round(T) || n ~= round(n) ...
+            || n < 1 || n > floor(T / 2)
+        error('forecastability:lags', 'T and n must be finite integer scalars with 1 <= n <= T/2.');
+    end
+    if numel(I) <= floor(T / 2) + 2
+        error('forecastability:length', 'The series is too short for lags up to T/2.');
     end
     [s, info] = scv(I, I_clr, d);
     e = I(:) - I_clr(:);
@@ -25,14 +29,19 @@ function [F, info] = forecastability(I, I_clr, T, n, d)
     for k = 1:numel(lags)
         a = e(1:end - lags(k)); b = e(1 + lags(k):end);
         ok = ~isnan(a) & ~isnan(b);
-        rho(k) = pearson(a(ok), b(ok));
+        rho(k) = pearson(a(ok), b(ok));          % NaN when fewer than 3 pairs or zero variance
     end
-    [rho_max, k] = max(abs(rho));
+    if all(isnan(rho))
+        error('forecastability:rho', 'The residual autocorrelation is undefined at every lag in [n, T/2].');
+    end
+    [rho_max, k] = max(abs(rho));                % max ignores NaN lags
     F = 1 + s * (rho_max - 1);
     info.scv = s; info.rho_max = rho_max; info.lag_of_max = lags(k); info.rho = rho; info.lags = lags;
 end
 
 function r = pearson(a, b)
+    if numel(a) < 3, r = NaN; return; end
     a = a - mean(a); b = b - mean(b);
-    r = sum(a .* b) / sqrt(sum(a .^ 2) * sum(b .^ 2));
+    den = sqrt(sum(a .^ 2) * sum(b .^ 2));
+    if den == 0, r = NaN; else, r = sum(a .* b) / den; end
 end

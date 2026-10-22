@@ -26,7 +26,7 @@ $$\mathrm{sCV} = \frac{\sqrt2}{|d-1|}\;\frac{\sqrt{\tfrac1n\sum_i \big(I(t_i)-I_
 
 - The numerator is the **RMSE of the clear-sky model** used as a forecast of I.
 - The denominator is the **root mean square of the clear-sky curve** (σ²_clr + μ²_clr is the mean of I_clr²).
-- The factor √2 / |d − 1| sets the scale: **sCV = 0** when I follows clear sky, **sCV = 1** when each hour is, with equal probability, clear or at the diffuse floor (the reference case of Figure 1).
+- The factor √2 / |d − 1| sets the scale: **sCV = 0** when I follows clear sky, **sCV ≈ 1** for a long series where each hour is, with equal probability, clear or at the diffuse floor (the reference case of Figure 1).
 - Night hours (I = I_clr = 0) add zero to both means: they do not change sCV.
 
 **Forecastability.** With ε = I − I_clr and ρ(i) its autocorrelation at lag i,
@@ -65,7 +65,7 @@ s = scv([400 500 760 200], [400 800 800 400])   % 0.5070
 F = 1 + s * (0.6 - 1)                            % 0.7972
 ```
 
-**Why sCV lies between 0 and 1.** The article bounds the measured irradiance between the diffuse floor and clear sky, d·I_clr ≤ I ≤ I_clr, and takes as the most variable sky the one that switches between the two at random. That sky gives sCV = 1 (exactly in expectation; a finite random sample gives 1 ± a few thousandths, 1.00 in Figure 1), and a clear sky gives 0. Long periods stuck at the diffuse floor are outside this assumption: the article notes that they are counted as highly variable although nothing changes, and that they are rare over a year of data (Section 4.1). Compute sCV over at least a year, as the article does.
+**What the value 1 means.** sCV is normalised on a reference sky that switches at random, half of the time, between clear sky and the diffuse floor d·I_clr: for that sky the mean of sCV² is 1, so a long series gives sCV ≈ 1 (1.00 in Figure 1). A clear sky gives 0. The value 1 is therefore a **reference of strong variability, not a mathematical maximum**: even with d·I_clr ≤ I ≤ I_clr, a sky that stays at the diffuse floor all the time gives √2 ≈ 1.41. The article calls sCV bounded within its working assumptions and notes that such persistent overcast periods count as highly variable although nothing changes, and are rare over a year of data (Section 4.1). The code does not clip the value. Compute sCV over at least a year, as the article does.
 
 ## Demonstration
 
@@ -94,8 +94,8 @@ The Monte Carlo part uses the generator of the article's scripts: clear sky max(
 
 | file | role |
 |---|---|
-| `scv.m` | sCV of a series (Eq. 10), diffuse floor d = 0.2 by default; NaN excluded |
-| `forecastability.m` | F at horizon n (Eqs. 12–13), with ρ_max and the lag where it is reached |
+| `scv.m` | sCV of a series (Eq. 10), diffuse floor d = 0.2 by default; NaN samples excluded; errors on Inf, invalid d or an all-zero clear sky; no clipping |
+| `forecastability.m` | F at horizon n (Eqs. 12–13), with ρ_max and the lag where it is reached; integer T and n with 1 ≤ n ≤ T/2; lags with fewer than 3 pairs or zero variance are ignored |
 | `demo_scv.m` | the demonstration above; writes `results/*.csv` |
 | `make_figures.py` | draws `figures/` (numpy, pandas, matplotlib) |
 | `paper_scripts/` | the article's MATLAB scripts, unchanged (SHA-256 in `paper_scripts_SHA256.txt`): `main.m` (one series), `Plot_Horizon.m` (horizons), `boxplot.m` (Monte Carlo), `dephasage.m` (phase shifts), with the persistence and periodic AR forecasts they call |
