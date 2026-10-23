@@ -1,0 +1,191 @@
+[
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#n",
+    "@type": [
+      "https://schema.org/PropertyValue"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "Integer from one through floor(T/2)."
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Forecast horizon in samples"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#d",
+    "@type": [
+      "https://schema.org/PropertyValue"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "Strictly less than one; default 0.2."
+      }
+    ],
+    "https://schema.org/minValue": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": 0
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Diffuse-floor fraction"
+      }
+    ],
+    "https://schema.org/unitCode": [
+      {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#T",
+    "@type": [
+      "https://schema.org/PropertyValue"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "Integer sampling count per day, not a duration in hours."
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Samples per day"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#F",
+    "@type": [
+      "https://schema.org/PropertyValue"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "Range [1-sCV,1]; not a probability or measured model accuracy."
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Forecastability"
+      }
+    ],
+    "https://schema.org/unitCode": [
+      {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#software",
+    "@type": [
+      "https://schema.org/SoftwareSourceCode"
+    ],
+    "https://github.com/cyrilvoyant/solar-variability-scv#input": [
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv#I"
+      },
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv#I_clr"
+      },
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv#d"
+      },
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv#T"
+      },
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv#n"
+      }
+    ],
+    "https://github.com/cyrilvoyant/solar-variability-scv#output": [
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv#sCV"
+      },
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv#F"
+      }
+    ],
+    "https://schema.org/citation": [
+      {
+        "@id": "https://doi.org/10.1016/j.renene.2025.123913"
+      }
+    ],
+    "https://schema.org/codeRepository": [
+      {
+        "@id": "https://github.com/cyrilvoyant/solar-variability-scv"
+      }
+    ],
+    "https://schema.org/identifier": [
+      {
+        "@id": "https://doi.org/10.5281/zenodo.23562553"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "solar-variability-scv"
+      }
+    ],
+    "https://schema.org/programmingLanguage": [
+      {
+        "@value": "MATLAB"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#I_clr",
+    "@type": [
+      "https://schema.org/PropertyValue"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "Same unit, length and timestamps as observed irradiance."
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Clear-sky irradiance"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#I",
+    "@type": [
+      "https://schema.org/PropertyValue"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "Unit declared by caller, usually W/m²; aligned regular sampling."
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Observed irradiance"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/cyrilvoyant/solar-variability-scv#sCV",
+    "@type": [
+      "https://schema.org/PropertyValue"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "One is a reference level, not an upper bound."
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Stochastic coefficient of variation"
+      }
+    ],
+    "https://schema.org/unitCode": [
+      {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      }
+    ]
+  }
+]

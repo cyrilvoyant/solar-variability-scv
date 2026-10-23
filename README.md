@@ -114,6 +114,10 @@ Base MATLAB R2021a or later, no toolbox, for the functions and the demonstration
 - Normalised forecast errors against persistence: [nice-metrics](https://github.com/cyrilvoyant/nice-metrics)
 - Persistence references for cyclostationary series: [cyclostationary-forecasting-matlab](https://github.com/cyrilvoyant/cyclostationary-forecasting-matlab)
 
+## Machine-readable scientific documentation
+
+The [use contract](llm.md) explains units, sampling, missing values and why sCV is not capped at one. The [documentation descriptor](websemantic.json) is not a deployed WebSemantic adapter. Equivalent linked data are provided as [Turtle](ontology/solar-variability-scv.ttl) and [JSON-LD](ontology/solar-variability-scv.jsonld).
+
 ## Citation and license
 
 Please cite the article above (see `CITATION.cff`). Code under the MIT license.

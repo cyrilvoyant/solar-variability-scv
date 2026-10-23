@@ -1,0 +1,19 @@
+@prefix schema: <https://schema.org/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix cv: <https://github.com/cyrilvoyant/solar-variability-scv#> .
+
+cv:software a schema:SoftwareSourceCode ;
+ schema:name "solar-variability-scv" ;
+ schema:codeRepository <https://github.com/cyrilvoyant/solar-variability-scv> ;
+ schema:programmingLanguage "MATLAB" ;
+ schema:citation <https://doi.org/10.1016/j.renene.2025.123913> ;
+ schema:identifier <https://doi.org/10.5281/zenodo.23562553> ;
+ cv:input cv:I, cv:I_clr, cv:d, cv:T, cv:n ;
+ cv:output cv:sCV, cv:F .
+cv:I a schema:PropertyValue ; schema:name "Observed irradiance" ; schema:description "Unit declared by caller, usually W/m²; aligned regular sampling." .
+cv:I_clr a schema:PropertyValue ; schema:name "Clear-sky irradiance" ; schema:description "Same unit, length and timestamps as observed irradiance." .
+cv:d a schema:PropertyValue ; schema:name "Diffuse-floor fraction" ; schema:unitCode unit:UNITLESS ; schema:minValue 0 ; schema:description "Strictly less than one; default 0.2." .
+cv:T a schema:PropertyValue ; schema:name "Samples per day" ; schema:description "Integer sampling count per day, not a duration in hours." .
+cv:n a schema:PropertyValue ; schema:name "Forecast horizon in samples" ; schema:description "Integer from one through floor(T/2)." .
+cv:sCV a schema:PropertyValue ; schema:name "Stochastic coefficient of variation" ; schema:unitCode unit:UNITLESS ; schema:description "One is a reference level, not an upper bound." .
+cv:F a schema:PropertyValue ; schema:name "Forecastability" ; schema:unitCode unit:UNITLESS ; schema:description "Range [1-sCV,1]; not a probability or measured model accuracy." .

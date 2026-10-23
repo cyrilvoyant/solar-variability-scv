@@ -1,0 +1,21 @@
+{
+  "schema_version": "scv-documentation-contract-1",
+  "integration_status": "documentation_only_not_registered_with_websemantic",
+  "software": {"repository": "https://github.com/cyrilvoyant/solar-variability-scv", "source_commit": "8cc62e8d5fbf58e418026a63be426589b93863fd", "entry_points": ["scv.m", "forecastability.m"], "runtime": "MATLAB", "doi": "10.5281/zenodo.23562553"},
+  "inputs": {
+    "I": {"type": "real_numeric_vector", "required": true, "unit": "irradiance_unit_declared_by_caller"},
+    "I_clr": {"type": "real_numeric_vector", "required": true, "unit": "same_as_I"},
+    "d": {"type": "finite_real_scalar", "required": false, "default": 0.2, "minimum": 0, "exclusiveMaximum": 1, "unit": "http://qudt.org/vocab/unit/UNITLESS"},
+    "T": {"type": "integer", "required_for": "forecastability", "minimum": 2, "unit": "samples_per_day"},
+    "n": {"type": "integer", "required_for": "forecastability", "minimum": 1, "maximum_expression": "floor(T/2)", "unit": "samples"}
+  },
+  "context_required": ["sampling_interval", "clear_sky_model", "record_period", "irradiance_unit", "quality_control_and_missingness"],
+  "constraints": ["equal length and aligned regular time grid", "real inputs; reject Inf", "joint NaN exclusion for sCV", "nonzero available clear-sky RMS", "for F: length > floor(T/2)+2", "for F with nonzero sCV: at least one lag with three available pairs and nonzero variance"],
+  "outputs": {
+    "sCV": {"unit": "http://qudt.org/vocab/unit/UNITLESS", "minimum": 0, "maximum": null},
+    "F": {"unit": "http://qudt.org/vocab/unit/UNITLESS", "theoretical_range": "[1-sCV, 1]", "is_probability": false},
+    "info": {"description": "See llm.md for field-specific units and the distinction between retained sample count info.n and horizon n."}
+  },
+  "limits": ["No field validation from the synthetic examples", "Clear-sky model uncertainty affects metrics", "No model accuracy or confidence interval returned", "Descriptor is documentation, not an executable validation gate"],
+  "article_doi": "10.1016/j.renene.2025.123913"
+}
